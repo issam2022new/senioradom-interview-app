@@ -1,0 +1,26 @@
+
+<h4> Distance between 2 points </h4>
+<div class="alert alert-primary" role="alert" *ngIf="distanceLessThan10">
+    Second point is inside the circle of radius 10 km and center First point 
+</div>
+<form [formGroup]="myForm">
+    <div class="form-group">
+        <label for="">First Point:</label>
+        <select class="form-control" formControlName="firstPoint">
+            <option disabled>Select GPS Point</option>
+            <option *ngFor="let gps of gpsPoints" value="{{gps.id}}">{{gps.latitude}} , {{gps.longitude}}</option>
+        </select>
+    
+    </div>
+    <div class="form-group" style="margin: 25px 0;">
+        <label for="">Second Point:</label>
+        <select class="form-control" formControlName="secondPoint">
+            <option disabled>Select GPS Point</option>
+            <option *ngFor="let gps of gpsPoints" value="{{gps.id}}">{{gps.latitude}} , {{gps.longitude}}</option>
+        </select>
+    
+    </div>
+    
+    <button class="btn btn-primary" type="submit" (click)="calculate()" [disabled]="myForm.invalid">Calculate</button>
+</form>
+

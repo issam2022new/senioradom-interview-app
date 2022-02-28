@@ -1,0 +1,34 @@
+
+<div class="col-sm-12">
+  <h3>List Of GPS Points</h3>
+  <div *ngIf="loading" class="spinner-border text-success" role="status">
+  </div>
+  <div class="alert alert-success" role="alert" *ngIf="deleted">
+    GPS Point Deleted with Successfull
+  </div>
+  <div class="alert alert-danger" role="alert" *ngIf="errorMEssage">
+    {{errorMEssage.error.message}}
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Latitude</th>
+      <th scope="col">Longitude</th>
+      <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let gpsPoint of gpsPoints">
+      <th scope="row">{{gpsPoint.id}}</th>
+      <td>{{gpsPoint.latitude}}</td>
+      <td>{{gpsPoint.longitude}}</td>
+      <td>
+        <a (click)="delete(gpsPoint.id)" style="cursor: pointer;">Delete</a>
+      </td>
+    </tr>
+  </tbody>
+  </table>
+</div>
+

@@ -1,0 +1,33 @@
+<div class="col-sm-12">
+  <h3>ADD GPS POINT</h3>
+<div class="spinner-border text-success" role="status" *ngIf="loading">
+</div>
+<div class="alert alert-success" role="alert" *ngIf="success">
+  GPS Point Added with Successful
+</div>
+  <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+    {{errorMessage.error.errors}}
+  </div>
+  <form [formGroup]="myForm">
+    
+    <div class="form-group">
+      <label for="latitudeInput">Latitude GPS Point</label>
+      <input type="number" class="form-control" id="latitudeInput" formControlName="latitude" placeholder="Enter latitude">
+      <span class="text-danger" *ngIf="myForm.get('latitude').errors && 
+                  myForm.get('latitude').hasError('required') &&
+                  myForm.get('latitude').touched
+                  ">Latitude is Mondatary</span>
+    </div>
+    <div class="form-group" style="margin-top: 30px;">
+      <label for="longitudeInput">Longitude GPS Point</label>
+      <input type="number" class="form-control" id="longitudeInput" formControlName="longitude" placeholder="Enter longitude">
+      <span class="text-danger" *ngIf="myForm.get('longitude').errors && 
+                        myForm.get('longitude').hasError('required') &&
+                        myForm.get('longitude').touched">Longitude is Mondatary</span>
+    </div>
+    <div class="form-group">
+      <br><br>
+      <button type="submit" class="btn btn-primary" (click)="submit()" [disabled]="myForm.invalid">Save</button>
+    </div>
+  </form>
+</div>
